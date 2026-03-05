@@ -147,16 +147,7 @@ cd countries_app
 
 ```flutter run -d chrome
 ```
-**## Project Structure**
 
-lib/
- ├── core/
- ├── features/
- │   ├── countries/
- │   ├── presentation/
- │   ├── data/
- │   └── domain/
- └── main.dart
 ## 🔒 Security Notes
 
 - No sensitive API keys were exposed.
