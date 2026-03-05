@@ -146,7 +146,7 @@ cd countries_app
 **### Run Application**
 
 ```flutter run -d chrome
-
+```
 **## Project Structure**
 
 lib/
