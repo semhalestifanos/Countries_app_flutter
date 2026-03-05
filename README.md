@@ -66,13 +66,13 @@ The project follows **Clean Architecture** combined with a **Feature-first struc
 This application uses the public REST Countries API.
 
 Base URL:
-``https://restcountries.com/v3.1/
+`` https://restcountries.com/v3.1/
 
 ### Example Endpoint
-``/all
+`` /all
 
 ### Sample Request
-https://restcountries.com/v3.1/all
+`` https://restcountries.com/v3.1/all
 
 
 This API provides country data including:
@@ -126,15 +126,15 @@ lib/
 # ⚙️ Installation
 
 ### 1. Clone the repository
-git clone https://github.com/semhalestifanos/Countries_app_flutter.git
+`` git clone https://github.com/semhalestifanos/Countries_app_flutter.git
 
 
 ### 2. Navigate to the project directory
-cd Countries_app_flutter
+`` cd Countries_app_flutter
 
 
 ### 3. Install dependencies
-flutter pub get
+`` flutter pub get
 
 
 ---
@@ -143,15 +143,15 @@ flutter pub get
 
 Run the application using:
 
-flutter run
+`` flutter run
 
 To run on Chrome:
 
-flutter run -d chrome
+`` flutter run -d chrome
 
 To run on an Android emulator or connected device:
 
-flutter run
+`` flutter run
 
 ---
 
