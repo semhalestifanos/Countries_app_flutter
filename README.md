@@ -1,210 +1,176 @@
-# 🌍 Countries App (Flutter)
+# 📱 Countries App – Flutter Mobile Application
 
-A Flutter mobile application that displays information about countries using the public REST Countries API.  
-The project was built following **clean architecture principles**, **feature-based folder structure**, and **BLoC state management** to demonstrate scalable Flutter application development.
+## 📌 Project Overview
 
-This project was developed as part of a **technical assessment**, focusing on code organization, maintainability, and good engineering practices.
+The Countries App is a mobile application built using Flutter that allows users to browse, search, and learn about countries around the world.
 
----
+The application integrates with a public REST API to fetch country data and demonstrates modern mobile engineering practices including state management, clean architecture principles, local persistence, and responsive UI handling.
 
-# 📱 Features
-
-- 🌍 Browse a list of countries
-- 🔎 Search countries by name
-- ⭐ Mark and manage favorite countries
-- 🌙 Dark mode / Light mode toggle
-- 🔤 Sort countries alphabetically
-- 📄 View detailed information about each country
-- 💾 Local persistence for favorites
-- ⚡ Efficient state management using BLoC
+This project was developed as part of a technical assessment focusing on real-world production-level mobile development skills.
 
 ---
 
-# 🧠 Architecture
+## 🚀 Key Features Implemented
 
-The project follows **Clean Architecture** combined with a **Feature-first structure**.
+### 🌍 Country Listing
+- Displays a scrollable list of countries.
+- Shows:
+  - Country flag
+  - Country name
+  - Population (formatted display)
 
+### 🔍 Search Functionality
+- Real-time search filtering.
+- Debounced search input to improve performance.
 
-### Layers Overview
+### 📄 Country Detail View
+- Fetches detailed country data using country code identifier.
+- Displays:
+  - Large flag banner
+  - Key statistics (Area, Population, Region, Subregion)
+  - Timezones list
+- Includes loading and error states.
 
-**Presentation Layer**
-- UI widgets
-- BLoC state management
-- Handles user interaction
+### ❤️ Favorites Management
+- Users can mark countries as favorites.
+- Favorite countries are stored locally.
+- Favorites persist after app restart.
 
-**Domain Layer**
-- Business logic
-- Use cases
-- Entities
-
-**Data Layer**
-- API calls
-- Models
-- Repository implementations
-
-**Core**
-- Shared utilities
-- Network configuration
-- Dependency injection
-
----
-
-# 🧰 Technologies Used
-
-- **Flutter**
-- **Dart**
-- **BLoC (flutter_bloc)**
-- **Dio** for networking
-- **REST Countries API**
-- **SharedPreferences** for local storage
-- **Service Locator / Dependency Injection**
+### 🔄 State Handling
+- Loading states
+- Error handling with retry functionality
+- Empty state UI feedback
 
 ---
 
-# 🌐 API
+## 🏗 Architecture & Design Approach
 
-This application uses the public REST Countries API.
+The project follows a **feature-based clean architecture structure**.
 
-Base URL:
-`` https://restcountries.com/v3.1/
+The codebase is organized into:
 
-### Example Endpoint
-`` /all
+- Presentation Layer (UI + Bloc)
+- Business Logic Layer (Bloc events and states)
+- Data Layer (Repository + API Client)
+- Local Storage Layer (Persistence)
 
-### Sample Request
-`` https://restcountries.com/v3.1/all
+### State Management
 
+The application uses **Bloc (Business Logic Component)** pattern.
 
-This API provides country data including:
+Advantages of Bloc usage:
 
-- Country name
-- Capital
-- Population
-- Region
-- Flag
-- Languages
-- Currency
+- Separation of UI and business logic
+- Predictable state transitions
+- Easier debugging
+- Scalability for future features
 
-No authentication or API key is required.
+## 🌗 Additional Features
+
+### 🌑 Dark Mode Support
+- The application supports theme switching between light and dark modes.
+- Improves usability in different lighting environments.
+
+### 🔀 Sorting Functionality
+- Users can sort country lists.
+- Sorting can be done based on:
+  - Country name
+  - Population
+- Enhances data browsing experience.
 
 ---
 
-# 📁 Project Structure
+## 🌐 API Integration
+
+The app uses the public REST Countries API:
+
+Two-step data fetching strategy was implemented:
+
+1. Fetch minimal data for country lists for performance optimization.
+2. Fetch detailed country data only when a country is selected.
+
+Network communication is handled using the Dio HTTP client.
+
+---
+
+## 💾 Local Storage
+
+Favorites are stored using `SharedPreferences`.
+
+Persistence ensures:
+- User favorite selections remain after app restart.
+
+---
+
+## 🎨 User Experience Enhancements
+
+- Pull-to-refresh support.
+- Loading indicators.
+- Error retry buttons.
+- Responsive layout design.
+
+Optional enhancement:
+- Hero animation for flag transitions.
+
+---
+
+## 📦 Technologies Used
+
+- Flutter SDK
+- Dart Programming Language
+- Bloc State Management
+- Dio HTTP Client
+- SharedPreferences
+- Clean Architecture Principles
+
+---
+
+## ⚙️ Setup Instructions
+
+### Prerequisites
+
+- Flutter SDK installed
+- Git installed
+- Internet connection
+
+### Clone Repository
+
+```bash
+git clone https://github.com/semhalestifanos/Countries_app_flutter.git
+cd countries_app
+
+**### Install Dependencies**
+
+```flutter pub get
+
+**### Run Application**
+
+```flutter run -d chrome
+
+**## Project Structure**
+
 lib/
-│
-├── core/
-│ ├── di/
-│ │ └── service_locator.dart
-│ │
-│ └── network/
-│ └── api_client.dart
-│
-├── features/
-│ ├── countries/
-│ │
-│ │ ├── data/
-│ │ │ ├── models/
-│ │ │ └── repositories/
-│ │ │
-│ │ ├── domain/
-│ │ │ ├── entities/
-│ │ │ └── repositories/
-│ │ │
-│ │ └── presentation/
-│ │ ├── bloc/
-│ │ │ ├── countries_bloc.dart
-│ │ │ ├── countries_event.dart
-│ │ │ └── countries_state.dart
-│ │ │
-│ │ ├── pages/
-│ │ └── widgets/
-│
-└── main.dart
+ ├── core/
+ ├── features/
+ │   ├── countries/
+ │   ├── presentation/
+ │   ├── data/
+ │   └── domain/
+ └── main.dart
+## 🔒 Security Notes
 
----
+- No sensitive API keys were exposed.
 
-# ⚙️ Installation
+- Public REST API was used.
 
-### 1. Clone the repository
-`` git clone https://github.com/semhalestifanos/Countries_app_flutter.git
+## ⭐ Future Improvements 
 
+- Caching optimization
 
-### 2. Navigate to the project directory
-`` cd Countries_app_flutter
+- Pagination support
 
+- Advanced animations
 
-### 3. Install dependencies
-`` flutter pub get
+## 👩‍💻 Author
 
-
----
-
-# ▶️ Running the Application
-
-Run the application using:
-
-`` flutter run
-
-To run on Chrome:
-
-`` flutter run -d chrome
-
-To run on an Android emulator or connected device:
-
-`` flutter run
-
----
-
-# 🧪 Development Highlights
-
-Key engineering practices demonstrated in this project:
-
-- Clean Architecture separation
-- Feature-based modular structure
-- BLoC state management pattern
-- Repository pattern for data abstraction
-- Dependency injection with service locator
-- Local persistence using SharedPreferences
-- Scalable and maintainable code organization
-
----
-
-# 🔒 Security Notes
-
-- No API keys or sensitive credentials are included in this repository.
-- The project uses a **public API** that does not require authentication.
-- `.env` files and other sensitive configuration files are excluded via `.gitignore`.
-
----
-
-# 🚀 Future Improvements
-
-Potential enhancements for production-level applications:
-
-- Pagination for large country lists
-- Offline caching with a local database (Hive / SQLite)
-- Unit and widget testing
-- Error handling and retry mechanisms
-- Performance optimizations for large datasets
-
----
-
-# 👨‍💻 Author
-
-**Semhal Estifanos**
-
-Flutter Developer
-
-GitHub  
-https://github.com/semhalestifanos
-
----
-
-# 📄 License
-
-This project is created for educational and assessment purposes.
-
-
-
-
-
+Developed as a technical assessment project by **Semhal Estifanos Abera**.
